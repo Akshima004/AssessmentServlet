@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script>
+	function validateForm() {
+		var x = document.forms["myForm"]["uname"].value;
+		var y = document.forms["myForm"]["address"].value;
+		var z = document.forms["myForm"]["pwd"].value;
+		var p = document.forms["myForm"]["pwdr"].value;
+		var special=/[!@#$%^&*]/;
+	    var number=/[0-9]/;
+		if(x.length<4){
+			alert("Name must contain atleast 4 characters");
+			return false;
+		}
+		else if(x.match(special)){
+	        alert("Name cant contains special characters");
+	        return false;
+	    }
+	    else if(x.match(number)){
+	       alert("Name cant contains number");
+	        return false;
+	    }
+		
+	 if (z.length < 4) {
+			alert("Password must contain atleast 4 characters! ");
+			return false;
+		
+		}
+	 else if(!z.match(special)){
+	        alert("Password must b strong ,must contain special character and number");
+	        return false;
+	    
+	    }
+	 else if (z != p) {
+			alert("Passwords do not match.");
+			return false;
+		} 
+		else {
+			return true;
+		}
+
+	}
+</script>
+</head>
+<body bgcolor="pink">
+<center>
+<form name="myForm" method="get" action="RegisterServlet"  >
+<h1><i>Fill the details</i></h1>
+<b>Name:</b><input type="text" name="uname" ><br><br>
+<b>Address:</b><input type="text" name="address" required><br><br>
+<b>Password:</b><input type="password" name="pwd"><br><br>
+<b>Reconfirm Password:</b><input type="password" name="pwdr"><br><br>
+<input type="submit" value="Confirm" onclick="return validateForm()">
+
+</form>
+</center>
+</body>
+</html>
